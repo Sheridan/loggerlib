@@ -32,3 +32,6 @@ LL_LOG_WRN("Warning" << std_string << cc_string);
 LL_LOG_ERR("Error" << std_string << i << cc_string);
 delete logger;
 ```
+
+# Dependencies
+[cpptoolslib](https://github.com/Sheridan/cpptoolslib)
