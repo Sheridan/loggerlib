@@ -24,7 +24,7 @@ public:
           const std::string &filenameDatetimeFormat = LL_DEFAULT_FILENAME_DATETIME_FORMAT,
           const bool        &outToFile              = true,
           const bool        &outToConsole           = true);
-  ~CLogger();
+  virtual ~CLogger();
 
   CLogger &start();
   void      stop();
