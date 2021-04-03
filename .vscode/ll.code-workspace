@@ -1,0 +1,60 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"setup-environment": "perl",
+			"*.yaml": "ansible",
+			"*.j2": "jinja",
+			"*.sh.j2": "jinja-shell",
+			"fstream": "cpp",
+			"ostream": "cpp"
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"jbenden.c-cpp-flylint",
+			"hars.cppsnippets",
+			"wlhe.c-cpp-snippets",
+			"twxs.cmake",
+			"ms-vscode.cmake-tools"
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Make release",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "/usr/bin/make",
+				"args": ["release"],
+				"cwd": "${workspaceFolder}",
+				"environment": [],
+				"externalConsole": false,
+				"logging": {
+					"moduleLoad": false,
+					"trace": true
+				}
+			},
+			{
+				"name": "Make debug",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "/usr/bin/make",
+				"args": ["debug"],
+				"cwd": "${workspaceFolder}",
+				"environment": [],
+				"externalConsole": false,
+				"logging": {
+					"moduleLoad": false,
+					"trace": true
+				}
+			}
+		]
+	}
+}
