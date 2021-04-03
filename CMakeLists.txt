@@ -17,14 +17,10 @@ endif (CMAKE_BUILD_TYPE STREQUAL Debug)
 
 set(LL_HEADERS
   src/clogger.h
-  src/tools/tools_fs.h
-  src/tools/tools_string.h
   )
 
 set(LL_SOURCES
   src/clogger.cpp
-  src/tools/tools_fs.cpp
-  src/tools/tools_string.cpp
   )
 
 include_directories(
@@ -37,4 +33,4 @@ include_directories(
 add_library(logger SHARED ${LL_HEADERS} ${LL_SOURCES})
 
 add_executable(lltest test/lltest.cpp)
-target_link_libraries(lltest PUBLIC logger stdc++fs)
+target_link_libraries(lltest PUBLIC logger cpptools stdc++fs)

@@ -1,6 +1,6 @@
 #include "clogger.h"
-#include "tools/tools_string.h"
-#include "tools/tools_fs.h"
+#include "cppt/string.h"
+#include "cppt/fs.h"
 
 #include <iomanip>
 #include <thread>
@@ -23,13 +23,13 @@ CLogger::CLogger(const bool        &prefixLineWithDateTime,
   if(outToFile)
   {
     std::string filename = filenameFormat;
-    if(!ll::tools::fs::file_exists(path))
+    if(!cppt::fs::file_exists(path))
     {
-      ll::tools::fs::create_path(path);
+      cppt::fs::create_path(path);
     }
-    if(!filenameDatetimeFormat.empty() && ll::tools::string::contains(filenameFormat, "{dt}"))
+    if(!filenameDatetimeFormat.empty() && cppt::string::contains(filenameFormat, "{dt}"))
     {
-      filename = ll::tools::string::replace_all(filename, "{dt}", ll::tools::string::formatted_current_datetime(filenameDatetimeFormat));
+      filename = cppt::string::replace_all(filename, "{dt}", cppt::string::formatted_current_datetime(filenameDatetimeFormat));
     }
     m_filename = path + "/" + filename;
   }
@@ -69,7 +69,7 @@ CLogger &CLogger::start()
   {
     m_logstream.open(m_filename, std::ofstream::out | std::ofstream::ate | std::ofstream::app);
   }
-  std::string time = ll::tools::string::formatted_current_datetime("[" LL_DEFAULT_DATETIME_FORMAT  "] ");
+  std::string time = cppt::string::formatted_current_datetime("[" LL_DEFAULT_DATETIME_FORMAT  "] ");
   #ifdef LL_DEBUG
   LL_COUT_RET(time << "{" << std::this_thread::get_id() << "} ");
   #else
