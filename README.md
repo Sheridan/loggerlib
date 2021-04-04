@@ -30,10 +30,11 @@ int i = 1;
 std::string std_string = "std::string";
 const char * cc_string = "const char * string";
 
-LL_LOG_DBG("Debug" << i << 123);
-LL_LOG_NFO("Information" << i << std_string);
-LL_LOG_WRN("Warning" << std_string << cc_string);
-LL_LOG_ERR("Error" << std_string << i << cc_string);
+LL_LOG_DBG("Debug " << i << " | " << 123);
+LL_LOG_NFO("Information " << i << " | " << std_string);
+LL_LOG_WRN("Warning " << std_string << " | " << cc_string);
+LL_LOG_ERR("Error " << std_string << " | " << i << " | " << cc_string);
+
 try
 {
     LL_LOG_CRY("Crytical");
