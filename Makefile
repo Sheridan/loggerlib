@@ -24,6 +24,7 @@ install_release: subdir=release
 install_release: install_target
 
 clean:
-	rm -rf ${BUILD_DIR}
+	-rm -rf ${BUILD_DIR}/debug
+	-rm -rf ${BUILD_DIR}/release
 	sudo rm /usr/local/lib/liblogger.so
 	sudo rm /usr/local/include/loggerlib.h
