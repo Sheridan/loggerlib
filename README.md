@@ -77,15 +77,15 @@ LL_LOG_NFO("Custom test" << ns::STest(1, 2) << ns::STest(4, 5));
 
 # Output
 ```
-[2021-04-04 23:05:20] {1} Opening log
-[2021-04-04 23:05:20] {1} [Debg] Debug 1 | 123
-[2021-04-04 23:05:20] {1} [Info] Information 1 | std::string
-[2021-04-04 23:05:20] {1} [Warn] Warning std::string | const char * string
-[2021-04-04 23:05:20] {1} [Errr] Error std::string | 1 | const char * string
-[2021-04-04 23:05:20] {1} [Errr] Crytical
-[2021-04-04 23:05:20] {1} [Info] Catched crytical: Crytical
-[2021-04-04 23:05:20] {1} [Info] Custom test(1,2.00)(4,5.00)
-[2021-04-04 23:05:20] {1} Closing log
+[2021-04-04 23:05:20] Opening log
+[2021-04-04 23:05:20] [Debg] Debug 1 | 123
+[2021-04-04 23:05:20] [Info] Information 1 | std::string
+[2021-04-04 23:05:20] [Warn] Warning std::string | const char * string
+[2021-04-04 23:05:20] [Errr] Error std::string | 1 | const char * string
+[2021-04-04 23:05:20] [Errr] Crytical
+[2021-04-04 23:05:20] [Info] Catched crytical: Crytical
+[2021-04-04 23:05:20] [Info] Custom test(1,2.00)(4,5.00)
+[2021-04-04 23:05:20] Closing log
 ```
 
 # Dependencies
