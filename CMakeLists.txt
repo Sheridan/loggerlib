@@ -27,8 +27,6 @@ set(LL_SOURCES
 
 include_directories(
   src
-  src/defines
-  src/tools
   test
   )
 
