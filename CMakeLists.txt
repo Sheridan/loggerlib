@@ -38,5 +38,7 @@ include_directories(
 
 add_library(logger SHARED ${LL_HEADERS} ${LL_SOURCES})
 
-add_executable(lltest test/main.h test/main.cpp)
-target_link_libraries(lltest PUBLIC logger cpptools stdc++fs)
+if(CMAKE_BUILD_TYPE STREQUAL Debug)
+  add_executable(lltest test/main.h test/main.cpp)
+  target_link_libraries(lltest PUBLIC logger cpptools stdc++fs)
+endif(CMAKE_BUILD_TYPE STREQUAL Debug)

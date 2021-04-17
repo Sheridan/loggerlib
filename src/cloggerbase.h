@@ -5,9 +5,8 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <liblogger/clogstring.h>
-// #include "clogpriority.h"
-#include <liblogger/clogpriority.h>
+#include "clogstring.h"
+#include "clogpriority.h"
 
 #define LL_WRITE(_what) \
     if(m_outToFile)    { m_logstream << _what; } \

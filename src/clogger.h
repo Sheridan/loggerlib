@@ -2,8 +2,7 @@
 
 #include <limits>
 #include <string>
-// #include "cloggerbase.h"
-#include <liblogger/cloggerbase.h>
+#include "cloggerbase.h"
 
 #define LL_DEFAULT_LOG_DIR "/var/log"
 #define LL_DEFAULT_DATETIME_FORMAT "%Y-%m-%d %H:%M:%S"
