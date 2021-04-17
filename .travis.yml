@@ -1,0 +1,25 @@
+language: cpp
+sudo: required
+compiler:
+- gcc
+os:
+- linux
+branches:
+  only:
+  - master
+
+before_script:
+- git clone https://github.com/Sheridan/cpptoolslib.git
+- cd cpptoolslib && make release
+- cd cpptoolslib && make install_release
+script:
+- make release
+after_success:
+- make install_release
+
+notifications:
+  email:
+    recipients:
+    - gorlov.maxim@gmail.com
+    on_success: change
+    on_failure: always
