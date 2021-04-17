@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Sheridan/loggerlib.svg?branch=master)](https://travis-ci.com/Sheridan/loggerlib)
+
 # loggerlib
 Simple C++ logger library is designed to easily integrate logging capabilities into your application.
 
