@@ -10,19 +10,25 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 option(CMAKE_BUILD_TYPE "Build type" Release)
 
 message("Configuring as " ${CMAKE_BUILD_TYPE})
-if (CMAKE_BUILD_TYPE STREQUAL Debug)
-    set(CMAKE_VERBOSE_MAKEFILE ON)
+if(CMAKE_BUILD_TYPE STREQUAL Debug)
+   set(CMAKE_VERBOSE_MAKEFILE ON)
    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEBUG")
    set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
-    add_definitions(-DLL_DEBUG)
-endif (CMAKE_BUILD_TYPE STREQUAL Debug)
+   add_definitions(-DLL_DEBUG)
+endif(CMAKE_BUILD_TYPE STREQUAL Debug)
 
 set(LL_HEADERS
   src/clogger.h
+  src/cloggerbase.h
+  src/clogstring.h
+  src/clogpriority.h
   )
 
 set(LL_SOURCES
   src/clogger.cpp
+  src/cloggerbase.cpp
+  src/clogstring.cpp
+  src/clogpriority.cpp
   )
 
 include_directories(
@@ -32,5 +38,5 @@ include_directories(
 
 add_library(logger SHARED ${LL_HEADERS} ${LL_SOURCES})
 
-add_executable(lltest test/lltest.cpp)
+add_executable(lltest test/main.h test/main.cpp)
 target_link_libraries(lltest PUBLIC logger cpptools stdc++fs)
