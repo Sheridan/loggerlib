@@ -2,19 +2,19 @@
 #include <cppt/string.h>
 #include <cppt/fs.h>
 #include <thread>
+#include <stdexcept>
+#include <cstring>
 
 namespace ll
 {
-CLoggerBase::CLoggerBase(const bool                    &prefixLineWithDateTime,
-                         const std::string             &path,
+CLoggerBase::CLoggerBase(const std::string             &path,
                          const std::string             &filenameFormat,
-                         const std::string             &filenameDatetimeFormat,
                          const std::string             &datetimeFormat,
                          const bool                    &outToFile,
                          const bool                    &outToConsole,
+                         const std::string             &filenameDatetimeFormat,
                          const CLogPriority::TPriority &maxPriority)
-  : m_prefixLineWithDateTime(prefixLineWithDateTime),
-    m_datetimeFormat(datetimeFormat),
+  : m_datetimeFormat(datetimeFormat),
     m_outToFile(outToFile),
     m_outToConsole(outToConsole),
     m_filename(""),
@@ -45,12 +45,16 @@ void CLoggerBase::start(const CLogPriority &priority)
   if(m_outToFile)
   {
     m_logstream.open(m_filename, std::ofstream::out | std::ofstream::ate | std::ofstream::app);
+    if((m_logstream.rdstate() & std::ofstream::failbit ) != 0 )
+    {
+      throw std::runtime_error("Can not open file " + m_filename + ": " + std::strerror(errno));
+    }
   }
   std::string time = cppt::string::formatted_current_datetime(m_datetimeFormat);
   #ifdef LL_DEBUG
-  write(CLogString(m_precision) << time << " " << m_priority->caption() << " " << "{thread id: " << std::this_thread::get_id() << "} | ");
+  write(CLogString(m_precision) << time << " {thread id: " << std::this_thread::get_id() << "} " << m_priority->caption() << " ");
   #else
-  write(CLogString(m_precision) << time << " " << m_priority->caption() << " | ");
+  write(CLogString(m_precision) << time << " " << m_priority->caption() << " ");
   #endif
 }
 
@@ -117,19 +121,9 @@ const unsigned short &CLoggerBase::precision() const
   return m_precision;
 }
 
-void CLoggerBase::setPrefixLineWithDateTime(const bool &prefixLineWithDateTime)
-{
-  m_prefixLineWithDateTime = prefixLineWithDateTime;
-}
-
 void CLoggerBase::setMaxPriority(const CLogPriority::TPriority &priority)
 {
   m_maxPriority = priority;
-}
-
-const bool &CLoggerBase::prefixLineWithDateTime() const
-{
-  return m_prefixLineWithDateTime;
 }
 
 const CLogPriority::TPriority &CLoggerBase::maxPriority() const

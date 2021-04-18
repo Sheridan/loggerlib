@@ -27,13 +27,12 @@ enum EControl
 class CLoggerBase
 {
 public:
-  CLoggerBase(const bool                    &prefixLineWithDateTime,
-              const std::string             &path,
+  CLoggerBase(const std::string             &path,
               const std::string             &filenameFormat,
-              const std::string             &filenameDatetimeFormat,
               const std::string             &datetimeFormat,
               const bool                    &outToFile,
               const bool                    &outToConsole,
+              const std::string             &filenameDatetimeFormat,
               const CLogPriority::TPriority &maxPriority);
   virtual ~CLoggerBase();
 
@@ -45,7 +44,6 @@ public:
   const std::string             &datetimeFormat() const;
   const bool                    &outToFile() const;
   const bool                    &outToConsole() const;
-  const bool                    &prefixLineWithDateTime() const;
   const CLogPriority::TPriority &maxPriority() const;
 
   void setPrecision(const unsigned short &precision);
@@ -55,13 +53,9 @@ public:
   void setDatetimeFormat(const std::string &datetimeFormat);
   void setOutToFile(const bool &outToFile);
   void setOutToConsole(const bool &outToConsole);
-  void setPrefixLineWithDateTime(const bool &prefixLineWithDateTime);
   void setMaxPriority(const CLogPriority::TPriority &priority);
 
-
 protected:
-  std::ofstream m_logstream;
-
   void start(const CLogPriority &priority);
   void write(const EControl &value);
   void write(const CLogString &value);
@@ -70,6 +64,8 @@ protected:
     LL_WRITE_PRIORITIZED(std::fixed << std::setprecision(m_precision) << value);
   }
 
+  std::ofstream m_logstream;
+
 private:
   void stop();
   void updateFilePath();
@@ -77,7 +73,6 @@ private:
   unsigned short           m_precision;
   bool                     m_outToFile;
   bool                     m_outToConsole;
-  bool                     m_prefixLineWithDateTime;
   std::string              m_filenameDatetimeFormat;
   std::string              m_filenameFormat;
   std::string              m_datetimeFormat;

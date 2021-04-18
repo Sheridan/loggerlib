@@ -17,21 +17,19 @@ class CLogger : public CLoggerBase
 {
 public:
   friend TLogger;
-  CLogger(const bool                    &prefixLineWithDateTime = true,
-          const std::string             &path                   = LL_DEFAULT_LOG_DIR,
+  CLogger(const std::string             &path                   = LL_DEFAULT_LOG_DIR,
           const std::string             &filenameFormat         = LL_DEFAULT_FILENAME_FORMAT,
-          const std::string             &filenameDatetimeFormat = LL_DEFAULT_FILENAME_DATETIME_FORMAT,
           const std::string             &datetimeFormat         = LL_DEFAULT_DATETIME_FORMAT,
           const bool                    &outToFile              = true,
           const bool                    &outToConsole           = true,
+          const std::string             &filenameDatetimeFormat = LL_DEFAULT_FILENAME_DATETIME_FORMAT,
           const CLogPriority::TPriority &maxPriority            = std::numeric_limits<CLogPriority::TPriority>::max())
-    : CLoggerBase(prefixLineWithDateTime,
-                  path,
+    : CLoggerBase(path,
                   filenameFormat,
-                  filenameDatetimeFormat,
                   datetimeFormat,
                   outToFile,
                   outToConsole,
+                  filenameDatetimeFormat,
                   maxPriority)
   {
     #ifdef LL_DEBUG

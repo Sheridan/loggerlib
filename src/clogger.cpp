@@ -1,7 +1,2 @@
 #include "clogger.h"
-
-
-namespace ll
-{
-
-}
+namespace ll{}

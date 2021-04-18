@@ -1,6 +1,7 @@
 #pragma once
 
-#include <loggerlib/loggerlib.h>
+// #include <loggerlib/loggerlib.h>
+#include "clogger.h"
 
 namespace ll_test
 {
@@ -15,6 +16,7 @@ struct STest
 class CLogger : public ll::CLogger<ll_test::CLogger>
 {
 public:
+  CLogger() : ll::CLogger<ll_test::CLogger>(".", "lltest.log") {}
   friend CLogger &operator<<(CLogger &logger, const STest &value)
   {
     logger.write(ll::CLogString() << "(" << value.a << "," << value.b << ")");

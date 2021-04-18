@@ -16,9 +16,11 @@ before_script:
 - make install_release
 - cd ..
 script:
-- make release
+- make debug
 after_success:
-- make install_release
+- make install_debug
+- .build/debug/lltest
+- cat lltest.log
 
 notifications:
   email:
