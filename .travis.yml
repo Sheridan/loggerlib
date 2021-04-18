@@ -19,7 +19,7 @@ script:
 - make debug
 after_success:
 - make install_debug
-- .build/debug/lltest
+- LD_LIBRARY_PATH="/usr/local/lib" .build/debug/lltest
 - cat lltest.log
 
 notifications:
