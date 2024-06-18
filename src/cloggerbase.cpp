@@ -1,6 +1,6 @@
 #include "cloggerbase.h"
-#include <cppt/string.h>
-#include <cppt/fs.h>
+#include <cpptoolslib/string/string.h>
+#include <cpptoolslib/fs/fs.h>
 #include <thread>
 #include <stdexcept>
 #include <cstring>
